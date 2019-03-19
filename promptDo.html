@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To do list</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+
+	<main>
+
+		<!--1 header-->
+		<header>
+			<h1>To Do list</h1>
+		</header>
+		<!--1 end-->
+
+		<!--2 todo prompt-->
+		<div id="todoPrompt">
+			<form>
+				<input type="text" placeholder="Enter task"required>
+				
+				<p>How many
+					<select class="time">
+						<option value="hours">hours</option>
+						<option value="days">days</option>
+						<option value="weeks">weeks</option>
+						<option value="months">months</option>
+					</select>
+					to deadline?
+
+					<input type="number" name="timeDuration" required>
+				</p>
+
+				<button id="createTask">Add</button>
+			</form>
+		</div>
+		<!--2 end-->
+
+		<hr>
+
+		<!--3 all tasks-->
+		<ul class="allTasks">
+
+			<!--li items-->
+
+		</ul>
+		<!--3 end-->
+
+		<!--4 add new task-->
+		<div class="addNewTask">
+			<button class="addNewTaskBtn"><b>+</b></button>
+		</div>
+		<!--4 end-->
+	</main>
+
+	<script type="text/javascript">
+		//read all comments
+		//further improvement...real time for tasks
+		var ul = document.querySelector(".allTasks");
+		var addTaskBtn = document.querySelector("#createTask");
+		var input = document.querySelector("input[type='text']");
+		var duration = document.querySelector("input[type='number']");
+		var select = document.querySelector(".time");
+
+		window.onload = () => {
+
+			ul.innerHTML = localStorage.getItem("todoList");
+			var deleteBtns = document.querySelectorAll(".deleteTask");
+			resetter();
+			for (var i = 0; i < deleteBtns.length; i++) {
+				deleteBtns[i].addEventListener("click", function () {
+					this.parentElement.parentElement.remove()
+					localStorage.setItem('todoList', ul.innerHTML);
+				});
+			}
+
+			var doneBtns = document.querySelectorAll(".doneTask");
+			for (var j = 0; j < doneBtns.length; j++) {
+				doneBtns[j].addEventListener("click", function () {
+					prompt("Are you sure...Cause I know you");
+				});
+			}
+
+		}
+
+		//Adding new task div
+		function resetter () {
+			addTaskBtn.addEventListener("click", function(e) {
+				e.preventDefault();
+
+				
+
+				var selectedTime = getSelectedOption(select).value;
+
+				var listItem = document.createElement("li"),
+					taskBox = document.createElement("div"),
+					taskTodo = document.createElement("div"),
+					deleteBtn = document.createElement("button"),
+					doneBtn = document.createElement("button"),
+					actionDiv = document.createElement("div");
+
+				listItem.classList.add("task");
+				taskBox.classList.add("taskBox");
+				taskTodo.classList.add("taskTodo");
+				deleteBtn.classList.add("actions", "deleteTask");
+				doneBtn.classList.add("actions", "doneTask");
+
+				doneBtn.innerHTML = "Done";
+				deleteBtn.innerHTML = "Delete";
+
+				deleteBtn.addEventListener("click", function () {
+					this.parentElement.parentElement.parentElement.remove();
+					localStorage.setItem('todoList', ul.innerHTML);
+				});
+
+				doneBtn.addEventListener("click", function () {
+					console.log("done")
+				});
+
+				actionDiv.append(doneBtn," ", deleteBtn);
+				actionDiv.classList.add("actionDiv");
+
+				if (input.value && duration.value && duration.value > 0) {
+					taskTodo.innerHTML = input.value +" due in "+ duration.value +" "+ selectedTime;
+
+					ul.appendChild(listItem).appendChild(taskBox).append(taskTodo,actionDiv);
+					input.value = "";
+
+				} else {
+					//replace with visual feedback
+					input.value = "fill here";
+					setTimeout(function () {
+						input.value = "";
+						duration.value = "";
+					}, 2000);
+					
+					
+				}
+
+				localStorage.setItem('todoList', ul.innerHTML);
+
+			});
+		}
+
+		function getSelectedOption(sel) {
+			var opt;
+			for (let i = 0; i < sel.options.length; i++) {
+				opt = select.options[i];
+				if (opt.selected) break
+			}
+			return opt;
+		};
+	
+
+
+		//style the app
+		//check for redundancy
+	</script>
+</body>
+</html>
