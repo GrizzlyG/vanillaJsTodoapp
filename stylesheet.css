@@ -180,7 +180,7 @@ h1 {
 	border: 1px solid red;
 }
 
-@media (max-width : 400px) {
+@media (max-width : 600px) {
 	:root {
 		font-size: 50px;
 	}
