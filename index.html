@@ -56,12 +56,12 @@
 	<script type="text/javascript">
 		//read all comments
 		//further improvement...real time for tasks
+		var addTaskBtn = document.querySelector("#createTask");
+		var select = document.querySelector(".time");
 		window.onload = () => {
 			var ul = document.querySelector(".allTasks");
-			var addTaskBtn = document.querySelector("#createTask");
 			var input = document.querySelector("input[type='text']");
 			var duration = document.querySelector("input[type='number']");
-			var select = document.querySelector(".time");
 			
 			if (localStorage.getItem("todoList")) {
 				ul.innerHTML = localStorage.getItem("todoList");
@@ -107,6 +107,16 @@
 
 				doneBtn.innerHTML = "Done";
 				deleteBtn.innerHTML = "Delete";
+				
+				deleteBtn.addEventListener("click", function () {
+					this.parentElement.parentElement.remove()
+					localStorage.setItem('todoList', ul.innerHTML);
+				});
+				
+				doneBtn.addEventListener("click", function () {
+					prompt("Are you sure");
+				});
+				
 				
 				actionDiv.append(doneBtn," ", deleteBtn);
 				actionDiv.classList.add("actionDiv");
