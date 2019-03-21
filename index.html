@@ -59,11 +59,10 @@
 		var addTaskBtn = document.querySelector("#createTask");
 		var select = document.querySelector(".time");
 		var input = document.querySelector("input[type='text']");
-		var duration = document.querySelector("input[type='number']");		
+		var duration = document.querySelector("input[type='number']");
+		var ul = document.querySelector(".allTasks");
+		
 		window.onload = () => {
-			var ul = document.querySelector(".allTasks");
-
-			
 			if (localStorage.getItem("todoList")) {
 				ul.innerHTML = localStorage.getItem("todoList");
 			}
