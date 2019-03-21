@@ -56,15 +56,17 @@
 	<script type="text/javascript">
 		//read all comments
 		//further improvement...real time for tasks
-		var ul = document.querySelector(".allTasks");
-		var addTaskBtn = document.querySelector("#createTask");
-		var input = document.querySelector("input[type='text']");
-		var duration = document.querySelector("input[type='number']");
-		var select = document.querySelector(".time");
-
 		window.onload = () => {
-
-			ul.innerHTML = localStorage.getItem("todoList");
+			var ul = document.querySelector(".allTasks");
+			var addTaskBtn = document.querySelector("#createTask");
+			var input = document.querySelector("input[type='text']");
+			var duration = document.querySelector("input[type='number']");
+			var select = document.querySelector(".time");
+			
+			if (localStorage.getItem("todoList") {
+				ul.innerHTML = localStorage.getItem("todoList");
+			}
+			
 			var deleteBtns = document.querySelectorAll(".deleteTask");
 			resetter();
 			for (var i = 0; i < deleteBtns.length; i++) {
@@ -87,11 +89,9 @@
 		function resetter () {
 			addTaskBtn.addEventListener("click", function(e) {
 				e.preventDefault();
-
 				
-
 				var selectedTime = getSelectedOption(select).value;
-
+				
 				var listItem = document.createElement("li"),
 					taskBox = document.createElement("div"),
 					taskTodo = document.createElement("div"),
@@ -107,16 +107,7 @@
 
 				doneBtn.innerHTML = "Done";
 				deleteBtn.innerHTML = "Delete";
-
-				deleteBtn.addEventListener("click", function () {
-					this.parentElement.parentElement.parentElement.remove();
-					localStorage.setItem('todoList', ul.innerHTML);
-				});
-
-				doneBtn.addEventListener("click", function () {
-					console.log("Are you sure")
-				});
-
+				
 				actionDiv.append(doneBtn," ", deleteBtn);
 				actionDiv.classList.add("actionDiv");
 
@@ -128,10 +119,14 @@
 
 				} else {
 					//replace with visual feedback
-					input.value = "fill here";
+					//input.value = "";
+					input.classList.add("redBorder");
+					duration.classList.add("redBorder")
 					setTimeout(function () {
 						input.value = "";
 						duration.value = "";
+						input.classList.remove("redBorder");
+						duration.classList.remove("redBorder");
 					}, 2000);
 					
 					
@@ -150,9 +145,6 @@
 			}
 			return opt;
 		};
-	
-
-
 		//style the app
 		//check for redundancy
 	</script>
