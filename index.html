@@ -58,10 +58,11 @@
 		//further improvement...real time for tasks
 		var addTaskBtn = document.querySelector("#createTask");
 		var select = document.querySelector(".time");
+		var input = document.querySelector("input[type='text']");
+		var duration = document.querySelector("input[type='number']");		
 		window.onload = () => {
 			var ul = document.querySelector(".allTasks");
-			var input = document.querySelector("input[type='text']");
-			var duration = document.querySelector("input[type='number']");
+
 			
 			if (localStorage.getItem("todoList")) {
 				ul.innerHTML = localStorage.getItem("todoList");
@@ -131,7 +132,7 @@
 					//replace with visual feedback
 					//input.value = "";
 					input.classList.add("redBorder");
-					duration.classList.add("redBorder")
+					duration.classList.add("redBorder");
 					setTimeout(function () {
 						input.value = "";
 						duration.value = "";
