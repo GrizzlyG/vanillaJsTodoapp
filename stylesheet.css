@@ -15,7 +15,8 @@
 
 main {
 	background-color: #90a4ae;
-	max-width: 400px;
+	width: 500px;
+	min-width: 400px;
 	margin: auto;
 	margin-top: 10%;
 	border: 1px solid black;
@@ -185,6 +186,7 @@ h1 {
 	}
 	main {
 		width: 90%;
+		min-width: 80%;
 	}
 
 	#todoPrompt {
