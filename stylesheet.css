@@ -34,7 +34,7 @@ header {
 	color: orange;
 	background-color: black;
 	margin: 0;
-	margin-bottom: 15px: 
+	margin-bottom: 15px;
 	width: 100%;
 }
 
@@ -183,8 +183,13 @@ h1 {
 @media (max-width : 600px) {
 	:root {
 		font-size: 50px;
+		
+	}
+	
+	header {
 		color : green;
 	}
+	
 	main {
 		width: 90%;
 		min-width: 80%;
