@@ -178,3 +178,34 @@ h1 {
 .redBorder {
 	border: 1px solid red;
 }
+
+@media (max-width : 400px) {
+	:root {
+		font-size: 50px;
+	}
+	main {
+		width: 90%;
+	}
+
+	#todoPrompt {
+		font-size: 40px;
+	}
+
+	#todoPrompt input[type=text] {
+		font-size: 40px;
+	}
+
+	#todoPrompt select {
+		font-size: 40px;
+	}
+
+	#todoPrompt p input{
+		font-size: 40px;
+	}
+	
+	.allTasks {
+		font-size: 30px;
+	}
+
+}
+
