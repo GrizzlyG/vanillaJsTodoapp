@@ -186,13 +186,9 @@ h1 {
 		
 	}
 	
-	header {
-		color : green;
-	}
-	
 	main {
 		width: 90%;
-		min-width: 80%;
+		min-width: 550px;
 	}
 
 	#todoPrompt {
