@@ -132,7 +132,7 @@ h1 {
 	background-color: orange;
 	padding: 3px;
 	padding-top: 10px;
-	height: 20px;
+	height: auto;
 }
 
 .actionDiv {
